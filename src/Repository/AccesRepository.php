@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Access;
+use App\Entity\Acces;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Access|null find($id, $lockMode = null, $lockVersion = null)
- * @method Access|null findOneBy(array $criteria, array $orderBy = null)
- * @method Access[]    findAll()
- * @method Access[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Acces|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Acces|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Acces[]    findAll()
+ * @method Acces[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AccessRepository extends ServiceEntityRepository
+class AccesRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Access::class);
+        parent::__construct($registry, Acces::class);
     }
 
     // /**
-    //  * @return Access[] Returns an array of Access objects
+    //  * @return Acces[] Returns an array of Acces objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class AccessRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Access
+    public function findOneBySomeField($value): ?Acces
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

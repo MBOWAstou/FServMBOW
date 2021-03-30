@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\AutorisationRepository;
+use App\Repository\UtilisateurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=AutorisationRepository::class)
+ * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
  */
-class Autorisation
+class Utilisateur
 {
     /**
      * @ORM\Id
@@ -20,17 +20,24 @@ class Autorisation
     private $id;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=255)
      */
-    private $Lecture;
+    private $nom;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=255)
      */
-    private $ecriture;
+    private $prenom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Acces::class, mappedBy="autorisationId")
+     * @ORM\Column(type="string", length=255)
+     */
+    private $code;
+
+    
+
+    /**
+     * @ORM\OneToMany(targetEntity=Acces::class, mappedBy="utilisateurId")
      */
     private $acces;
 
@@ -44,29 +51,42 @@ class Autorisation
         return $this->id;
     }
 
-    public function getLecture(): ?bool
+    public function getNom(): ?string
     {
-        return $this->Lecture;
+        return $this->nom;
     }
 
-    public function setLecture(bool $Lecture): self
+    public function setNom(string $nom): self
     {
-        $this->Lecture = $Lecture;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function getEcriture(): ?bool
+    public function getPrenom(): ?string
     {
-        return $this->ecriture;
+        return $this->prenom;
     }
 
-    public function setEcriture(bool $ecriture): self
+    public function setPrenom(string $prenom): self
     {
-        $this->ecriture = $ecriture;
+        $this->prenom = $prenom;
 
         return $this;
     }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(string $code): self
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
 
     /**
      * @return Collection|Acces[]
@@ -80,7 +100,7 @@ class Autorisation
     {
         if (!$this->acces->contains($acce)) {
             $this->acces[] = $acce;
-            $acce->setAutorisationId($this);
+            $acce->setUtilisateurId($this);
         }
 
         return $this;
@@ -90,8 +110,8 @@ class Autorisation
     {
         if ($this->acces->removeElement($acce)) {
             // set the owning side to null (unless already changed)
-            if ($acce->getAutorisationId() === $this) {
-                $acce->setAutorisationId(null);
+            if ($acce->getUtilisateurId() === $this) {
+                $acce->setUtilisateurId(null);
             }
         }
 

@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Utilistateur;
+use App\Entity\Utilisateur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Utilistateur|null find($id, $lockMode = null, $lockVersion = null)
- * @method Utilistateur|null findOneBy(array $criteria, array $orderBy = null)
- * @method Utilistateur[]    findAll()
- * @method Utilistateur[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Utilisateur|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Utilisateur|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Utilisateur[]    findAll()
+ * @method Utilisateur[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UtilistateurRepository extends ServiceEntityRepository
+class UtilisateurRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Utilistateur::class);
+        parent::__construct($registry, Utilisateur::class);
     }
 
     // /**
-    //  * @return Utilistateur[] Returns an array of Utilistateur objects
+    //  * @return Utilisateur[] Returns an array of Utilisateur objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class UtilistateurRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Utilistateur
+    public function findOneBySomeField($value): ?Utilisateur
     {
         return $this->createQueryBuilder('u')
             ->andWhere('u.exampleField = :val')
